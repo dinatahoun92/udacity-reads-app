@@ -6,7 +6,9 @@ class Shelf extends React.Component {
   state = {
     
   }
-
+changeShelves(book,shelf){
+           this.props.changeShelves(book,shelf)
+       }
 
   render() {
     return (
@@ -18,7 +20,7 @@ class Shelf extends React.Component {
                     <ol className="books-grid">
          {this.props.books.filter(books => books.shelf == 'currentlyReading').map(books =>(
                             <li key={books.id}>
-                        <Book books={books}/>
+                        <Book books={books} changeShelves={(book,shelf)=>{this.changeShelves(book,shelf)}}/>
                                 </li>
           ))}
                     </ol>
@@ -30,7 +32,7 @@ class Shelf extends React.Component {
               <ol className="books-grid">
          {this.props.books.filter(books => books.shelf == 'wantToRead').map(books =>(
                             <li key={books.id}>
-                        <Book books={books}/>
+                        <Book books={books} changeShelves={(book,shelf)=>{this.changeShelves(book,shelf)}}/>
                                 </li>
           ))}
                     </ol>
@@ -42,7 +44,7 @@ class Shelf extends React.Component {
  <ol className="books-grid">
          {this.props.books.filter(books => books.shelf == 'read').map(books =>(
                             <li key={books.id}>
-                        <Book books={books}/>
+                        <Book books={books} changeShelves={(book,shelf)=>{this.changeShelves(book,shelf)}}/>
                                 </li>
           ))}
                     </ol>
