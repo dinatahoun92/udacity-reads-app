@@ -9,13 +9,22 @@ changeShelves(value){
     }
 
 render(){
+     let thumbnail;
+
+      if(!!this.props.books.imageLinks){
+          thumbnail =`url(${this.props.books.imageLinks.thumbnail})`
+      }else{
+          thumbnail= `url('https://placeholdit.co//i/128x193?&bg=555&fc=fff&text=Book Cover')`
+      }
+    
     console.log(this.props.books)
     return(
           <li key={this.props.books.id}>
                             
                         <div className="book">
                           <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.books.imageLinks.thumbnail})`}}></div>
+                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:thumbnail}}></div>
+
                             <div className="book-shelf-changer">
                               <select value={this.props.books.shelf || 'none'}
                                   onChange={(event) => this.changeShelves(event.target.value)}>

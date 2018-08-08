@@ -1,6 +1,5 @@
 import React from 'react'
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
-import escapeRegExp from 'escape-string-regexp'
 import * as BooksAPI from './../BooksAPI'
 import Book from './book.js'
 
@@ -18,11 +17,12 @@ updateQuery=(query) =>{
     searchBooks = (query) =>{
     if(query){
       BooksAPI.search(query).then((result) => {
-        if(result.error){
-        this.setState({searchResult: []});   
+        if(!result.error){
+        this.setState({searchResult: result})
+        
         }
         else{
-          this.setState({searchResult: result})
+          this.setState({searchResult: []}); 
         }
       })
     }
