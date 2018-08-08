@@ -13,21 +13,29 @@ class Search extends React.Component {
 updateQuery=(query) =>{
     this.setState({query:query})
 }
-clearQuery = () => {
-    this.setState({ query: '' })
-  }
 
 
-  render() {
-       let showingBooks
-    if (this.state.query) {
-      const match = new RegExp(escapeRegExp(this.state.query), 'i')
-       showingBooks = this.props.books.filter((book) => match.test(book.name))
-    } else {
-       showingBooks = this.props.books
+    searchBooks = (query) =>{
+    if(query){
+      BooksAPI.search(query).then((result) => {
+        if(result.error){
+        this.setState({searchResult: []});   
+        }
+        else{
+          this.setState({searchResult: result})
+        }
+      })
     }
-              console.log(this.state.query)
-
+    else{
+      this.setState({searchResult: []});
+    }
+  }
+onChange = (query, event) => {
+		this.updateQuery(query)
+		this.searchBooks(query)
+	}
+  render() {
+     
     return (
           <div className="search-books">
             <div className="search-books-bar">
@@ -35,16 +43,21 @@ clearQuery = () => {
               <div className="search-books-input-wrapper">
                 
                 <input type="text" placeholder="Search by title or author" 
-                onChange={(event) => this.updateQuery(event.target.value)}
+                onChange={(event) => this.onChange(event.target.value)}
 value={this.state.query}
                     />
 
               </div>
             </div>
            <div className="search-books-results">
-              <ol className="books-grid">
-                
-              </ol>
+               <ol className="books-grid">
+                {
+                    this.state.searchResult.map((books) =>(
+                         <Book key={books.id} books={books}/>
+                    )
+                                                                        )
+                }
+                  </ol>
             </div>
           </div>
         )
