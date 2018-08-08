@@ -48,7 +48,7 @@ class BooksApp extends React.Component {
       <Route path="/search" render={({history}) =>
     
            (
-        <Search/>
+        <Search books={this.state.books}/>
         )}/>
        <Route exact path="/" render={({history}) =>
     (

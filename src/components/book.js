@@ -11,6 +11,7 @@ changeShelves(value){
 render(){
     console.log(this.props.books)
     return(
+          <li key={this.props.books.id}>
                             
                         <div className="book">
                           <div className="book-top">
@@ -29,7 +30,7 @@ render(){
                           <div className="book-title">{this.props.books.title}</div>
                           <div className="book-authors">{this.props.books.authors}</div>
                         </div>
-                      
+        </li>
     )
 }
 }

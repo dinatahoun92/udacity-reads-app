@@ -19,9 +19,9 @@ changeShelves(book,shelf){
                   <div className="bookshelf-books">
                     <ol className="books-grid">
          {this.props.books.filter(books => books.shelf == 'currentlyReading').map(books =>(
-                            <li key={books.id}>
+                          
                         <Book books={books} changeShelves={(book,shelf)=>{this.changeShelves(book,shelf)}}/>
-                                </li>
+                              
           ))}
                     </ol>
                   </div>
@@ -31,9 +31,9 @@ changeShelves(book,shelf){
                   <div className="bookshelf-books">
               <ol className="books-grid">
          {this.props.books.filter(books => books.shelf == 'wantToRead').map(books =>(
-                            <li key={books.id}>
+                           
                         <Book books={books} changeShelves={(book,shelf)=>{this.changeShelves(book,shelf)}}/>
-                                </li>
+                               
           ))}
                     </ol>
                   </div>
@@ -43,9 +43,9 @@ changeShelves(book,shelf){
                   <div className="bookshelf-books">
  <ol className="books-grid">
          {this.props.books.filter(books => books.shelf == 'read').map(books =>(
-                            <li key={books.id}>
+                          
                         <Book books={books} changeShelves={(book,shelf)=>{this.changeShelves(book,shelf)}}/>
-                                </li>
+                               
           ))}
                     </ol>
                   </div>
