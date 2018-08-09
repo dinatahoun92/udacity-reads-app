@@ -37,10 +37,8 @@ updateQuery=(query) =>{
         }
       })
     }
-    else{
-      this.setState({searchResult: []});
     }
-  }
+   
 onChange = (query, event) => {
 		this.updateQuery(query)
 		this.searchBooks(query)
