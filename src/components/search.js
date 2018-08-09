@@ -18,7 +18,18 @@ updateQuery=(query) =>{
     if(query){
       BooksAPI.search(query).then((result) => {
         if(!result.error){
-        this.setState({searchResult: result})
+          let Shelfs = result.map(book => {
+            for (var i = 0; i < this.props.books.length; i++) {
+              if (this.props.books[i].id === book.id) {
+                book.shelf = this.props.books[i].shelf;
+              }
+            }
+            return book;
+          })
+          this.setState({
+            searchResult: result
+          })
+        
          
         }
         else{
@@ -55,7 +66,7 @@ value={this.state.query}
            <div className="search-books-results">
        
                 <ol className="books-grid">
-                {this.state.searchResult.map(books => {
+                {this.state.searchResult.map((books) => {
                      
 
                                

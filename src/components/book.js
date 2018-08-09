@@ -17,7 +17,7 @@ render(){
           thumbnail= `url('https://placeholdit.co//i/128x193?&bg=555&fc=fff&text=Book Cover')`
       }
     
-    console.log(this.props.books)
+   
     return(
           <li key={this.props.books.id}>
                             
