@@ -36,7 +36,9 @@ updateQuery=(query) =>{
           this.setState({searchResult: []});  
         }
       })
-    }
+    } else{
+          this.setState({searchResult: []});  
+        }
     }
    
 onChange = (query, event) => {
